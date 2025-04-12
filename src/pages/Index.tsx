@@ -15,7 +15,13 @@ import {
   HardDrive,
   Cpu,
   Globe,
-  Zap
+  Zap,
+  CircleDot,
+  ServerCrash,
+  Server as ServerIcon,
+  DatabaseIcon,
+  CloudCog,
+  HardDriveIcon
 } from 'lucide-react';
 
 import Navbar from '@/components/Navbar';
@@ -26,6 +32,7 @@ import WorldMap from '@/components/WorldMap';
 import PricingCard from '@/components/PricingCard';
 import ContactForm from '@/components/ContactForm';
 import TestimonialCard from '@/components/TestimonialCard';
+import NodesStatusCard from '@/components/NodesStatusCard';
 
 const Index = () => {
   return (
@@ -45,37 +52,37 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button className="bg-vyzic-600 hover:bg-vyzic-700 text-lg px-8 py-6">Get Started</Button>
-              <Button variant="outline" className="text-lg px-8 py-6">Contact Sales</Button>
+              <Button variant="outline" className="text-lg px-8 py-6 border-slate-700 hover:bg-slate-800">Contact Sales</Button>
             </div>
           </div>
           
           <div className="relative mx-auto max-w-5xl">
-            <div className="rounded-2xl overflow-hidden border border-white/20 shadow-xl bg-gradient-to-br from-vyzic-900 to-vyzic-950">
-              <div className="grid grid-cols-3 gap-px bg-white/10 p-px">
-                <div className="bg-black/30 backdrop-blur p-6 flex flex-col items-center">
+            <div className="rounded-2xl overflow-hidden border border-slate-700/50 shadow-xl bg-gradient-to-br from-slate-900 to-slate-950">
+              <div className="grid grid-cols-3 gap-px bg-slate-700/20 p-px">
+                <div className="bg-slate-900/80 backdrop-blur p-6 flex flex-col items-center">
                   <Server className="h-10 w-10 text-vyzic-400 mb-2" />
-                  <p className="text-sm text-center text-white/90">Scalable Computing</p>
+                  <p className="text-sm text-center text-slate-300">Scalable Computing</p>
                 </div>
-                <div className="bg-black/30 backdrop-blur p-6 flex flex-col items-center">
+                <div className="bg-slate-900/80 backdrop-blur p-6 flex flex-col items-center">
                   <Database className="h-10 w-10 text-vyzic-400 mb-2" />
-                  <p className="text-sm text-center text-white/90">Cloud Storage</p>
+                  <p className="text-sm text-center text-slate-300">Cloud Storage</p>
                 </div>
-                <div className="bg-black/30 backdrop-blur p-6 flex flex-col items-center">
+                <div className="bg-slate-900/80 backdrop-blur p-6 flex flex-col items-center">
                   <Network className="h-10 w-10 text-vyzic-400 mb-2" />
-                  <p className="text-sm text-center text-white/90">Global Network</p>
+                  <p className="text-sm text-center text-slate-300">Global Network</p>
                 </div>
               </div>
-              <div className="p-8 bg-black/50 backdrop-blur">
+              <div className="p-8 bg-slate-900/90 backdrop-blur">
                 <div className="flex flex-col md:flex-row gap-4 items-center">
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white">Global Cloud Dashboard</h3>
-                    <p className="text-white/70">Monitor and manage your cloud resources from a single interface</p>
+                    <h3 className="text-lg font-semibold">Global Cloud Dashboard</h3>
+                    <p className="text-slate-400">Monitor and manage your cloud resources from a single interface</p>
                   </div>
-                  <Button className="bg-white/10 hover:bg-white/20 text-white flex-shrink-0">Launch Dashboard</Button>
+                  <Button className="bg-slate-800 hover:bg-slate-700 text-white flex-shrink-0">Launch Dashboard</Button>
                 </div>
               </div>
             </div>
-            <div className="absolute -z-10 w-full aspect-square rounded-full bg-vyzic-600/20 blur-[100px] -top-1/3 left-1/2 -translate-x-1/2"></div>
+            <div className="absolute -z-10 w-full aspect-square rounded-full bg-vyzic-600/10 blur-[100px] -top-1/3 left-1/2 -translate-x-1/2"></div>
           </div>
         </div>
 
@@ -83,8 +90,72 @@ const Index = () => {
         <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-5"></div>
       </section>
 
+      {/* Node Status Section */}
+      <section id="nodes" className="py-20">
+        <div className="container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Node Status Monitor</h2>
+            <p className="text-muted-foreground text-lg">
+              Real-time status of our infrastructure nodes across all regions. 
+              Monitor performance and reliability at a glance.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <NodesStatusCard 
+              name="Compute Node A01" 
+              location="North America East"
+              status="online"
+              type="High CPU"
+              lastPing="Just now"
+              icon={ServerIcon}
+            />
+            <NodesStatusCard 
+              name="Database Node DB3" 
+              location="Europe Central"
+              status="online"
+              type="High Memory"
+              lastPing="2 min ago"
+              icon={DatabaseIcon}
+            />
+            <NodesStatusCard 
+              name="Storage Node S05" 
+              location="Asia Pacific"
+              status="warning"
+              type="High Storage"
+              lastPing="5 min ago"
+              icon={HardDriveIcon}
+            />
+            <NodesStatusCard 
+              name="Cache Node C12" 
+              location="Australia"
+              status="online"
+              type="High Memory"
+              lastPing="Just now"
+              icon={CloudCog}
+            />
+            <NodesStatusCard 
+              name="Backup Node B07" 
+              location="North America West"
+              status="offline"
+              type="Standard Storage"
+              lastPing="25 min ago"
+              icon={ServerCrash}
+            />
+            <NodesStatusCard 
+              name="GPU Node G02" 
+              location="Asia East"
+              status="online"
+              type="Accelerated"
+              lastPing="1 min ago"
+              icon={Cpu}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" className="py-20 bg-vyzic-50">
+      <section id="services" className="py-20 bg-slate-950">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Cloud Solutions for Every Need</h2>
@@ -165,7 +236,7 @@ const Index = () => {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="relative rounded-2xl overflow-hidden border border-vyzic-100 p-1 bg-gradient-to-b from-white to-vyzic-50 shadow-xl">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-700 p-1 bg-gradient-to-b from-slate-800 to-slate-900 shadow-xl">
                 <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
                 <div className="relative rounded-xl overflow-hidden">
                   <img 
@@ -174,14 +245,14 @@ const Index = () => {
                     className="w-full h-auto"
                   />
                 </div>
-                <div className="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur p-4 rounded-lg border border-vyzic-100">
+                <div className="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur p-4 rounded-lg border border-slate-700/50">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-vyzic-600 flex items-center justify-center text-white">
                       <Server size={20} />
                     </div>
                     <div>
                       <p className="font-medium">Powerful Infrastructure</p>
-                      <p className="text-sm text-muted-foreground">Latest generation hardware for optimal performance</p>
+                      <p className="text-sm text-slate-400">Latest generation hardware for optimal performance</p>
                     </div>
                   </div>
                 </div>
@@ -192,11 +263,11 @@ const Index = () => {
       </section>
 
       {/* Data Center Map Section */}
-      <section id="datacenter" className="py-20 bg-vyzic-950 text-white">
+      <section id="datacenter" className="py-20 bg-slate-950 text-white">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Global Data Center Network</h2>
-            <p className="text-vyzic-100 text-lg">
+            <p className="text-slate-300 text-lg">
               Deploy your applications closer to your users with our strategically located data centers around the world.
             </p>
           </div>
@@ -204,28 +275,28 @@ const Index = () => {
           <WorldMap />
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-            <div className="bg-vyzic-900/50 backdrop-blur p-6 rounded-lg border border-vyzic-700/50">
+            <div className="data-center-card">
               <h3 className="text-xl font-semibold mb-2">7+ Regions</h3>
-              <p className="text-vyzic-200">Strategic global coverage for low latency access</p>
+              <p className="text-slate-400">Strategic global coverage for low latency access</p>
             </div>
-            <div className="bg-vyzic-900/50 backdrop-blur p-6 rounded-lg border border-vyzic-700/50">
+            <div className="data-center-card">
               <h3 className="text-xl font-semibold mb-2">20+ Data Centers</h3>
-              <p className="text-vyzic-200">State-of-the-art facilities with redundant systems</p>
+              <p className="text-slate-400">State-of-the-art facilities with redundant systems</p>
             </div>
-            <div className="bg-vyzic-900/50 backdrop-blur p-6 rounded-lg border border-vyzic-700/50">
+            <div className="data-center-card">
               <h3 className="text-xl font-semibold mb-2">99.99% Uptime</h3>
-              <p className="text-vyzic-200">Industry-leading SLA for maximum reliability</p>
+              <p className="text-slate-400">Industry-leading SLA for maximum reliability</p>
             </div>
-            <div className="bg-vyzic-900/50 backdrop-blur p-6 rounded-lg border border-vyzic-700/50">
+            <div className="data-center-card">
               <h3 className="text-xl font-semibold mb-2">100 Gbps Network</h3>
-              <p className="text-vyzic-200">Ultra-fast global backbone for optimal performance</p>
+              <p className="text-slate-400">Ultra-fast global backbone for optimal performance</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-vyzic-50">
+      <section className="py-20 bg-slate-900">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Trusted by Industry Leaders</h2>
@@ -316,7 +387,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-vyzic-50">
+      <section id="contact" className="py-20 bg-slate-900">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -325,9 +396,9 @@ const Index = () => {
                 Have questions or ready to get started? Our team is here to help you find the perfect cloud solution for your needs.
               </p>
               
-              <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+              <div className="glass-card rounded-xl p-6 mb-6">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-vyzic-100 flex items-center justify-center text-vyzic-600">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-vyzic-400">
                     <Users size={24} />
                   </div>
                   <div>
@@ -335,12 +406,12 @@ const Index = () => {
                     <p className="text-muted-foreground">For new customers and general inquiries</p>
                   </div>
                 </div>
-                <a href="mailto:sales@vyzic.com" className="text-vyzic-600 font-medium hover:underline">sales@vyzic.com</a>
+                <a href="mailto:sales@vyzic.com" className="text-vyzic-400 font-medium hover:underline">sales@vyzic.com</a>
               </div>
               
-              <div className="bg-white rounded-xl border border-gray-200 p-6">
+              <div className="glass-card rounded-xl p-6">
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-vyzic-100 flex items-center justify-center text-vyzic-600">
+                  <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-vyzic-400">
                     <Zap size={24} />
                   </div>
                   <div>
@@ -348,11 +419,11 @@ const Index = () => {
                     <p className="text-muted-foreground">24/7 assistance for existing customers</p>
                   </div>
                 </div>
-                <a href="mailto:support@vyzic.com" className="text-vyzic-600 font-medium hover:underline">support@vyzic.com</a>
+                <a href="mailto:support@vyzic.com" className="text-vyzic-400 font-medium hover:underline">support@vyzic.com</a>
               </div>
             </div>
             
-            <div className="bg-white rounded-xl border border-gray-200 p-6 md:p-8 shadow-lg">
+            <div className="glass-card rounded-xl p-6 md:p-8 shadow-lg">
               <h3 className="text-2xl font-semibold mb-6">Contact Us</h3>
               <ContactForm />
             </div>
@@ -363,7 +434,7 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container">
-          <div className="max-w-4xl mx-auto bg-vyzic-600 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-vyzic-700 to-vyzic-900 rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-pattern opacity-10"></div>
             <div className="absolute -bottom-16 -right-16 w-64 h-64 bg-vyzic-500/30 rounded-full blur-3xl"></div>
             <div className="absolute -top-16 -left-16 w-64 h-64 bg-vyzic-700/30 rounded-full blur-3xl"></div>

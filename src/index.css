@@ -5,38 +5,6 @@
 
 @layer base {
   :root {
-    --background: 220 100% 99%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 214 100% 50%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222 47% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 213 94% 68%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 214 100% 50%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
     --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
@@ -78,7 +46,7 @@
 }
 
 .glass-card {
-  @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg;
+  @apply bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 shadow-lg;
 }
 
 .vyzic-gradient {
@@ -86,5 +54,25 @@
 }
 
 .text-gradient {
-  @apply bg-gradient-to-r from-vyzic-500 to-vyzic-800 text-transparent bg-clip-text;
+  @apply bg-gradient-to-r from-vyzic-400 to-vyzic-700 text-transparent bg-clip-text;
+}
+
+.status-online {
+  @apply text-green-500;
+}
+
+.status-warning {
+  @apply text-yellow-500;
+}
+
+.status-offline {
+  @apply text-red-500;
+}
+
+.node-status-card {
+  @apply bg-slate-900/80 backdrop-blur-md border border-slate-700/50 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+}
+
+.data-center-card {
+  @apply bg-slate-900/50 backdrop-blur p-6 rounded-lg border border-slate-700/50;
 }

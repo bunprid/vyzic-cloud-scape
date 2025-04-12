@@ -12,7 +12,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon: Ico
   return (
     <div className="flex gap-4 p-4">
       <div className="flex-shrink-0">
-        <div className="rounded-full bg-vyzic-100 p-3 text-vyzic-600">
+        <div className="rounded-full bg-slate-800 p-3 text-vyzic-400">
           <Icon size={24} />
         </div>
       </div>
